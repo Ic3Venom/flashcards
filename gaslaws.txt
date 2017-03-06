@@ -1,0 +1,6 @@
+P1V1 = P2V2 - Boyle's Law
+V1/T1 = V2/T2 - Charles' Law
+PV = nRT - Ideal Gas Law
+P1V1/T1 = P2V2/T2 - Combined Gas Law
+V1/n1 = V2/n2 - Avogadro's Law
+Pn = Pa + Pb... - Dalton's Law
