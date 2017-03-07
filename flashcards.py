@@ -20,43 +20,40 @@ def main():
             length = 0
             for line in f:
                 length += 1
-        wrong = [i for i in range(length)]
-        shuffle(wrong)
 
+        random = list(range(length))
+        shuffle(random)
+        #random also carries its own index integer
+        random.insert(1, 1)
     except:
         print 'Unknown file name \'%s\'. Exiting program.' % fileName
         exit(1)
 
     with open(fileName, 'r') as f:
-        i = 0
-        j = 0
-        print wrong
 
         while True:
-
+            i = 0
             for line in f:
-                if j == wrong[i]:
+                if i == random[random[0]]:
 
+                    j = 0
                     for char in line.split():
-                        j += 1
-
                         if char == fileSplit:
                             term = ' '.join(line.split()[:j])
-                            definition = ' '.join(line.split()[j-1:])
-
+                            definition = ' '.join(line.split()[j+1:])
+                        j += 1
 
                     userInput = raw_input(term)
-                    if userInput is not definition:
+                    if userInput.lower is not definition.lower:
                         print 'Wrong! It should be %s' % definition
-                        wrong.append(i)
-                    i += 1
-                    j = 0
-                j += 1
-            break
+                        random[i] = definition, fileSplit, term
 
+                    random[0] = int(random[0]) + 1
+                    break
+            if i is length:
+                break
 
 
 if __name__ == '__main__':
     main()
-
     exit(0)
