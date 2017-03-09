@@ -11,8 +11,8 @@
 from random import shuffle
 
 def main():
-    fileName  = str(raw_input('What is the flashcard file name? (include file type)'))
-    fileSplit = str(raw_input('What character separates the term and definition?'))
+    fileName  = str(raw_input('What is the flashcard file name? (include file type) '))
+    fileSplit = str(raw_input('What character separates the term and definition? '))
 
     try:
         #Used to create random card order
@@ -24,6 +24,8 @@ def main():
 
         rng = list(range(rngLen))
         shuffle(rng)
+        del rngLen
+
         #rng also carries its own index integer
         rng.insert(0, 1)
     except:
@@ -38,6 +40,7 @@ def main():
                 for line in f:
                     if i == rng[rng[0] + 1]:
                         j = 0
+
                         for char in line.split():
                             if char == fileSplit:
                                 term = ' '.join(line.split()[:j])
@@ -45,15 +48,24 @@ def main():
                             j += 1
 
                         userInput = str(raw_input(term + ': '))
-                        if userInput.lower() is not definition.lower():
-                            print 'Wrong! It should be %s' % definition
-                            rng[i + 1] = str(definition, fileSplit, term)
-
+                        if userInput.lower() != definition.lower():
+                            print '\t- Wrong! It should be %s' % definition
+                            rng[rng[0] + 1] = 'You typed ' + str(userInput) + 'for ' + str(term) + ', should be ' + str(definition)
                         rng[0] += 1
                         break
                     i += 1
-                if rng[0] is rngLen:
+                if rng[0] == len(rng):
                     break
+            
+            userInput = raw_input("Yes or No: ")
+            if userInput.lower() in ['yes', 'y']
+                wrongCount = 0
+                for i in rng:
+                    if type(i) is str:
+                        wrongCount += 1
+                        print i
+                print 'You got %d cards wrong', % wrongCount
+
             f.close()
 
 if __name__ == '__main__':
