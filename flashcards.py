@@ -54,17 +54,18 @@ def main():
                         rng[0] += 1
                         break
                     i += 1
-                if rng[0] == len(rng):
+                if rng[0] == (len(rng) - 1):
                     break
-            
+
+            print 'You have finished all the cards! Would you like to know which ones you got wrong?',
             userInput = raw_input("Yes or No: ")
-            if userInput.lower() in ['yes', 'y']
+            if userInput.lower() in ['yes', 'y']:
                 wrongCount = 0
                 for i in rng:
                     if type(i) is str:
                         wrongCount += 1
                         print i
-                print 'You got %d cards wrong', % wrongCount
+                print 'You got %d cards wrong' % wrongCount
 
             f.close()
 
