@@ -45,12 +45,15 @@ def main():
                             if char == fileSplit:
                                 term = ' '.join(line.split()[:j])
                                 definition = ' '.join(line.split()[j+1:])
+                                break
                             j += 1
 
                         userInput = str(raw_input(term + ': '))
                         if userInput.lower() != definition.lower():
                             print '\t- Wrong! It should be %s' % definition
-                            rng[rng[0] + 1] = 'You typed ' + str(userInput) + 'for ' + str(term) + ', should be ' + str(definition)
+                            rng[rng[0] + 1] = '\nYou typed ' + str(userInput) + ' for ' + str(term) + ', should be ' + str(definition)
+                        else:
+                            print '\t- Correct!'
                         rng[0] += 1
                         break
                     i += 1
@@ -65,7 +68,10 @@ def main():
                     if type(i) is str:
                         wrongCount += 1
                         print i
-                print 'You got %d cards wrong' % wrongCount
+                if wrongCount == 1:
+                    print 'You got 1 card wrong'
+                else:
+                    print 'You got %d cards wrong.' % wrongCount
 
             f.close()
 
